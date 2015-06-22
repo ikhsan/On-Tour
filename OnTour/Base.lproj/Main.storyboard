@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bAu-8k-J73">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--On Tour!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OnTour" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +22,146 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Type artist's name" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-kP-QjN">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SCU-gG-vFs"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1oo-Nk-Sea"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aGM-gU-qad">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ttO-fS-aU3">
+                                    <size key="itemSize" width="287" height="84"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtistCellIdentifier" id="BPG-bC-b8Z" customClass="ArtistCell" customModule="OnTour" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="287" height="84"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="84"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tour-badge" translatesAutoresizingMaskIntoConstraints="NO" id="u6w-MN-CNB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="tXT-hp-sfB"/>
+                                                        <constraint firstAttribute="width" constant="40" id="vk4-1N-URy"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="247" translatesAutoresizingMaskIntoConstraints="NO" id="OiG-8Q-mXh">
+                                                    <rect key="frame" x="20" y="20" width="247" height="44"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" white="0.15331318429999999" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jL0-mZ-tif">
+                                                    <rect key="frame" x="0.0" y="83" width="287" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="K66-0m-jHu"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="OiG-8Q-mXh" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" constant="20" id="5ms-uy-uLn"/>
+                                            <constraint firstItem="OiG-8Q-mXh" firstAttribute="top" secondItem="BPG-bC-b8Z" secondAttribute="top" constant="20" id="BqN-Oh-DZ6"/>
+                                            <constraint firstAttribute="trailing" secondItem="jL0-mZ-tif" secondAttribute="trailing" id="IxS-h8-Dga"/>
+                                            <constraint firstItem="u6w-MN-CNB" firstAttribute="top" secondItem="BPG-bC-b8Z" secondAttribute="top" id="OBW-Pl-RAF"/>
+                                            <constraint firstAttribute="trailing" secondItem="OiG-8Q-mXh" secondAttribute="trailing" constant="20" id="PHX-eU-Wf8"/>
+                                            <constraint firstAttribute="bottom" secondItem="OiG-8Q-mXh" secondAttribute="bottom" constant="20" id="Uf7-Ej-GOd"/>
+                                            <constraint firstAttribute="bottom" secondItem="jL0-mZ-tif" secondAttribute="bottom" id="jRl-Wy-zXk"/>
+                                            <constraint firstItem="jL0-mZ-tif" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" id="nIV-p9-GHf"/>
+                                            <constraint firstItem="u6w-MN-CNB" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" id="uIA-rm-C0W"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="OiG-8Q-mXh" id="nh5-An-ope"/>
+                                            <outlet property="onTourBadgeView" destination="u6w-MN-CNB" id="U7m-lJ-YdR"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Vk1-hC-zfl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="frh-BN-EBd"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2H-a0-soB">
+                                <rect key="frame" x="150" y="122" width="300" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="EjB-gW-ghF"/>
+                                    <constraint firstAttribute="width" constant="300" id="bOi-T7-tv3"/>
+                                </constraints>
+                                <string key="text">Search your favorite artists' tours whereabouts! Enter your artists name on the search box. Ex; McCartney, Stones, Metallica, Gaga, Bad Religion</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="m2h-Rg-gc5">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="kaI-zM-bfs"/>
+                                    <constraint firstAttribute="height" constant="37" id="qZB-Kw-Ey4"/>
+                                </constraints>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FAN-kP-QjN" secondAttribute="trailing" id="6U4-MO-qYC"/>
+                            <constraint firstItem="G2H-a0-soB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Y7-Lg-qPN"/>
+                            <constraint firstItem="G2H-a0-soB" firstAttribute="top" secondItem="FAN-kP-QjN" secondAttribute="bottom" constant="14" id="BUh-dO-cit"/>
+                            <constraint firstItem="FAN-kP-QjN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GKj-4k-1P0"/>
+                            <constraint firstItem="aGM-gU-qad" firstAttribute="top" secondItem="FAN-kP-QjN" secondAttribute="bottom" id="JOV-M0-0ku"/>
+                            <constraint firstItem="m2h-Rg-gc5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NPQ-Yl-TU4"/>
+                            <constraint firstItem="aGM-gU-qad" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Tnw-Cy-xq6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aGM-gU-qad" secondAttribute="bottom" id="WH8-fQ-7Cj"/>
+                            <constraint firstItem="FAN-kP-QjN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Wl6-6h-AQb"/>
+                            <constraint firstItem="m2h-Rg-gc5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eth-cN-KCZ"/>
+                            <constraint firstAttribute="trailing" secondItem="aGM-gU-qad" secondAttribute="trailing" id="hC4-HB-W68"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="On Tour!" id="Dzq-h9-uqe"/>
+                    <connections>
+                        <outlet property="collectionView" destination="aGM-gU-qad" id="O9Z-UO-kOD"/>
+                        <outlet property="indicator" destination="m2h-Rg-gc5" id="JjG-fk-yvV"/>
+                        <outlet property="instructionLabel" destination="G2H-a0-soB" id="YNv-mh-6IJ"/>
+                        <outlet property="searchBar" destination="FAN-kP-QjN" id="R88-cp-FAj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1154" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NeK-JW-I2K">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bAu-8k-J73" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDt-bo-Evw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="E6h-tA-x6v"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XdD-Gs-MpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tour-badge" width="40" height="40"/>
+    </resources>
 </document>

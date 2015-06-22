@@ -1,0 +1,6 @@
+framework module JPSThumbnailAnnotation {
+  umbrella header "Pods-JPSThumbnailAnnotation-umbrella.h"
+
+  export *
+  module * { export * }
+}
