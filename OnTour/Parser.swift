@@ -1,10 +1,3 @@
-//
-//  Parser.swift
-//  OnTour
-//
-//  Created by Ikhsan Assaat on 6/21/15.
-//  Copyright © 2015 Ikhsan Assaat. All rights reserved.
-//
 
 import Foundation
 import SwiftyJSON
@@ -16,4 +9,18 @@ class Parser {
         }
         return status == "ok"
     }
+}
+
+extension String {
+    
+    private var formatter: NSDateFormatter {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+    
+    func sk_date() -> NSDate? {
+        return formatter.dateFromString(self)
+    }
+    
 }

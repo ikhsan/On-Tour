@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 
+@available(iOS 9.0, *)
 class OnTourUITests: XCTestCase {
         
     override func setUp() {

@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-Black</string>
+            <string>Avenir-Heavy</string>
+        </mutableArray>
         <mutableArray key="AvenirNext.ttc">
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
@@ -14,7 +19,7 @@
         <!--On Tour!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OnTour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="OnTour" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -37,17 +42,17 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ttO-fS-aU3">
-                                    <size key="itemSize" width="287" height="84"/>
+                                    <size key="itemSize" width="600" height="84"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtistCellIdentifier" id="BPG-bC-b8Z" customClass="ArtistCell" customModule="OnTour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="287" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tour-badge" translatesAutoresizingMaskIntoConstraints="NO" id="u6w-MN-CNB">
@@ -58,35 +63,45 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="247" translatesAutoresizingMaskIntoConstraints="NO" id="OiG-8Q-mXh">
-                                                    <rect key="frame" x="20" y="20" width="247" height="44"/>
+                                                    <rect key="frame" x="20" y="20" width="540" height="44"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" white="0.15331318429999999" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jL0-mZ-tif">
-                                                    <rect key="frame" x="0.0" y="83" width="287" height="1"/>
+                                                    <rect key="frame" x="0.0" y="83" width="600" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="K66-0m-jHu"/>
+                                                        <constraint firstAttribute="height" constant="1" id="nda-mr-dDx"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoF-wG-neH">
+                                                    <rect key="frame" x="566" y="21" width="20" height="41"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="30"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="OiG-8Q-mXh" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" constant="20" id="5ms-uy-uLn"/>
+                                            <constraint firstAttribute="trailing" secondItem="EoF-wG-neH" secondAttribute="trailing" constant="14" id="8Gj-Ob-SQY"/>
+                                            <constraint firstAttribute="bottom" secondItem="jL0-mZ-tif" secondAttribute="bottom" id="AVG-0T-tEQ"/>
                                             <constraint firstItem="OiG-8Q-mXh" firstAttribute="top" secondItem="BPG-bC-b8Z" secondAttribute="top" constant="20" id="BqN-Oh-DZ6"/>
-                                            <constraint firstAttribute="trailing" secondItem="jL0-mZ-tif" secondAttribute="trailing" id="IxS-h8-Dga"/>
                                             <constraint firstItem="u6w-MN-CNB" firstAttribute="top" secondItem="BPG-bC-b8Z" secondAttribute="top" id="OBW-Pl-RAF"/>
-                                            <constraint firstAttribute="trailing" secondItem="OiG-8Q-mXh" secondAttribute="trailing" constant="20" id="PHX-eU-Wf8"/>
+                                            <constraint firstAttribute="trailing" secondItem="OiG-8Q-mXh" secondAttribute="trailing" constant="40" id="PHX-eU-Wf8"/>
                                             <constraint firstAttribute="bottom" secondItem="OiG-8Q-mXh" secondAttribute="bottom" constant="20" id="Uf7-Ej-GOd"/>
-                                            <constraint firstAttribute="bottom" secondItem="jL0-mZ-tif" secondAttribute="bottom" id="jRl-Wy-zXk"/>
-                                            <constraint firstItem="jL0-mZ-tif" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" id="nIV-p9-GHf"/>
+                                            <constraint firstItem="jL0-mZ-tif" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" id="ckp-yy-5Qv"/>
+                                            <constraint firstItem="EoF-wG-neH" firstAttribute="centerY" secondItem="BPG-bC-b8Z" secondAttribute="centerY" id="lHW-8f-4YS"/>
                                             <constraint firstItem="u6w-MN-CNB" firstAttribute="leading" secondItem="BPG-bC-b8Z" secondAttribute="leading" id="uIA-rm-C0W"/>
+                                            <constraint firstAttribute="trailing" secondItem="jL0-mZ-tif" secondAttribute="trailing" id="uOR-Nh-zlc"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="arrowView" destination="EoF-wG-neH" id="oHi-pG-4i0"/>
                                             <outlet property="nameLabel" destination="OiG-8Q-mXh" id="nh5-An-ope"/>
                                             <outlet property="onTourBadgeView" destination="u6w-MN-CNB" id="U7m-lJ-YdR"/>
+                                            <segue destination="0yR-oP-wrh" kind="show" identifier="SearchToDetail" id="VYF-3a-KzD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -159,6 +174,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdD-Gs-MpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="342" y="339"/>
+        </scene>
+        <!--Artist View Controller-->
+        <scene sceneID="uln-UW-Hcb">
+            <objects>
+                <viewController id="0yR-oP-wrh" customClass="ArtistViewController" customModule="OnTour" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lcR-LQ-XkU"/>
+                        <viewControllerLayoutGuide type="bottom" id="ex4-Zn-Tve"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kRP-LJ-Fi7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WhI-ly-RIu">
+                                <rect key="frame" x="0.0" y="64" width="600" height="210"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="6ks-rw-fvW"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tour-badge" translatesAutoresizingMaskIntoConstraints="NO" id="qY6-9Y-X3J" userLabel="Tour badge">
+                                <rect key="frame" x="0.0" y="64" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="BCy-je-cTD"/>
+                                    <constraint firstAttribute="height" constant="40" id="qRw-CP-fng"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-d5-u6s">
+                                <rect key="frame" x="234" y="209" width="132" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.1074931569" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="2"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs0-7w-3S1">
+                                <rect key="frame" x="0.0" y="271" width="600" height="329"/>
+                            </mapView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xg8-na-l88">
+                                <rect key="frame" x="255" y="554" width="91" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.1074931569" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="2"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="380-ms-Bf2">
+                                <rect key="frame" x="269" y="239" width="63" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
+                                <color key="textColor" white="0.94651003649999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="2"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gs0-7w-3S1" firstAttribute="top" secondItem="380-ms-Bf2" secondAttribute="bottom" constant="10" id="19f-80-fMj"/>
+                            <constraint firstItem="xg8-na-l88" firstAttribute="centerX" secondItem="kRP-LJ-Fi7" secondAttribute="centerX" id="9N0-hy-auY"/>
+                            <constraint firstItem="P2E-d5-u6s" firstAttribute="centerX" secondItem="WhI-ly-RIu" secondAttribute="centerX" id="CQR-lt-5Be"/>
+                            <constraint firstItem="gs0-7w-3S1" firstAttribute="top" secondItem="WhI-ly-RIu" secondAttribute="bottom" constant="-3" id="FHA-Xl-p5b"/>
+                            <constraint firstItem="qY6-9Y-X3J" firstAttribute="leading" secondItem="kRP-LJ-Fi7" secondAttribute="leading" id="JgF-xV-fu7"/>
+                            <constraint firstItem="ex4-Zn-Tve" firstAttribute="top" secondItem="xg8-na-l88" secondAttribute="bottom" constant="16" id="RCp-6W-ZMH"/>
+                            <constraint firstItem="gs0-7w-3S1" firstAttribute="leading" secondItem="kRP-LJ-Fi7" secondAttribute="leading" id="XWf-d9-hNk"/>
+                            <constraint firstAttribute="trailing" secondItem="WhI-ly-RIu" secondAttribute="trailing" id="aI9-qg-Zjx"/>
+                            <constraint firstItem="ex4-Zn-Tve" firstAttribute="top" secondItem="gs0-7w-3S1" secondAttribute="bottom" id="anv-er-2sO"/>
+                            <constraint firstAttribute="trailing" secondItem="gs0-7w-3S1" secondAttribute="trailing" id="cwu-Gf-OSs"/>
+                            <constraint firstItem="qY6-9Y-X3J" firstAttribute="top" secondItem="lcR-LQ-XkU" secondAttribute="bottom" id="fZ2-lt-OHL"/>
+                            <constraint firstItem="WhI-ly-RIu" firstAttribute="leading" secondItem="kRP-LJ-Fi7" secondAttribute="leading" id="iQw-Kr-vHo"/>
+                            <constraint firstItem="380-ms-Bf2" firstAttribute="centerX" secondItem="WhI-ly-RIu" secondAttribute="centerX" id="lmk-1O-Wcj"/>
+                            <constraint firstItem="WhI-ly-RIu" firstAttribute="top" secondItem="lcR-LQ-XkU" secondAttribute="bottom" id="tcT-xS-VaX"/>
+                            <constraint firstItem="380-ms-Bf2" firstAttribute="top" secondItem="P2E-d5-u6s" secondAttribute="bottom" id="ygX-as-uGU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="badgeView" destination="qY6-9Y-X3J" id="ljw-qN-gX7"/>
+                        <outlet property="imageView" destination="WhI-ly-RIu" id="Dvg-eh-0T1"/>
+                        <outlet property="mapLabel" destination="xg8-na-l88" id="Ay4-NA-XNl"/>
+                        <outlet property="nameLabel" destination="P2E-d5-u6s" id="QXF-kw-kV7"/>
+                        <outlet property="similarArtistsLabel" destination="380-ms-Bf2" id="97c-Pe-bSv"/>
+                        <outlet property="tourMapView" destination="gs0-7w-3S1" id="5M7-qU-6tv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXC-Jd-W7G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="339"/>
         </scene>
     </scenes>
     <resources>

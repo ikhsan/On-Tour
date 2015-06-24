@@ -1,10 +1,3 @@
-//
-//  SongkickColors.swift
-//  OnTour
-//
-//  Created by Ikhsan Assaat on 6/21/15.
-//  Copyright © 2015 Ikhsan Assaat. All rights reserved.
-//
 
 import UIKit
 

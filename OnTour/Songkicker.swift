@@ -1,10 +1,3 @@
-//
-//  Songkicker.swift
-//  OnTour
-//
-//  Created by Ikhsan Assaat on 6/20/15.
-//  Copyright © 2015 Ikhsan Assaat. All rights reserved.
-//
 
 import Foundation
 import Alamofire
@@ -17,6 +10,7 @@ enum Result<T, Error: ErrorType> {
 enum SongkickerError : ErrorType {
     case ConfigurationError
     case NetworkError
+    case ParsingDataError
     case ParsingError(String)
 }
 
@@ -29,7 +23,7 @@ class Songkicker {
         self.apikey = apikey
     }
     
-    class func kick(path: String, additionalParameters: [String: AnyObject]?, completionHandler: (Result<[String: AnyObject], SongkickerError>) -> Void) {
+    class func kick(path: String, additionalParameters: [String: AnyObject] = ["page": 1], completionHandler: (Result<[String: AnyObject], SongkickerError>) -> Void) {
         
         guard base != "" && apikey != "" else {
             completionHandler(.Failure(.ConfigurationError))
@@ -38,21 +32,31 @@ class Songkicker {
         
         // use base url & apikey params
         let URLString = base.stringByAppendingPathComponent(path)
-        var params = (additionalParameters != nil) ? additionalParameters! : [:]
+        var params = additionalParameters
         params["apikey"] = apikey
         
         // alamo wrapper
         Alamofire
-            .request(.GET, URLString: URLString, parameters: params, encoding: .URL)
-//            .responseString { (_, _, string, _) -> Void in
-//                print(string)
-//            }
-            .responseJSON { (_, _, object, _) -> Void in
-                if let json = object as! [String: AnyObject]? {
-                    completionHandler(.Success(json))
-                } else {
-                    completionHandler(.Failure(.NetworkError))
-                }
+        .request(.GET, URLString: URLString, parameters: params, encoding: .URL)
+        .responseJSON { (_, _, object, _) -> Void in
+            if let json = object as! [String: AnyObject]? {
+                completionHandler(.Success(json))
+            } else {
+                completionHandler(.Failure(.NetworkError))
             }
+        }
     }
+    
+    class func kickData(fullpath: String, completionHandler: (Result<NSData, SongkickerError>) -> Void) {
+        Alamofire
+        .request(.GET, URLString: fullpath, parameters: nil, encoding: .URL)
+        .response { (_, _, anyobject, _) -> Void in
+            if let data = anyobject as? NSData {
+                completionHandler(.Success(data))
+            } else {
+                completionHandler(.Failure(.ParsingDataError))
+            }
+        }
+    }
+    
 }
