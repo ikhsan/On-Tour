@@ -7,10 +7,17 @@ extension Parser {
     
     static func parseArtists(json: JSON) -> ResultArtist {
         
-        guard validate(json), let artistsJSON = json["resultsPage"]["results"]["artist"].array else {
+        guard validate(json) else {
             let status = json["resultsPage"]["error"]["message"].stringValue
-            let error = SongkickerError.ParsingError(status)
-            return .Failure(error)
+            return .Failure(.ParsingError(status))
+        }
+        
+        guard let totalEntries = json["resultsPage"]["totalEntries"].int where totalEntries > 0 else {
+            return .Failure(.EmptySetError)
+        }
+        
+        guard let artistsJSON = json["resultsPage"]["results"]["artist"].array else {
+            return .Failure(.ParsingDataError)
         }
         
         let artists = artistsJSON.map { Artist(json: $0) }

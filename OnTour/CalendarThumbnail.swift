@@ -23,20 +23,21 @@ class CalendarThumbnail {
         }
         
         // image creation
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 40.0, height: 40.0))
+        let size = 80.0
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: size, height: size))
         view.backgroundColor = UIColor.songkickBlue
         
-        let monthLabel = UILabel(frame: CGRect(x: 0.0, y: 5.0, width: CGRectGetWidth(view.bounds), height: 10.0))
+        let monthLabel = UILabel(frame: CGRect(x: 0.0, y: 10.0, width: CGRectGetWidth(view.bounds), height: 20.0))
         monthLabel.text = month
         monthLabel.textAlignment = .Center
-        monthLabel.font = UIFont(name: "Avenir-Black", size: 10.0)
+        monthLabel.font = UIFont(name: "Avenir-Black", size: 20.0)
         monthLabel.textColor = UIColor.whiteColor()
         view.addSubview(monthLabel)
         
-        let dayLabel = UILabel(frame: CGRect(x: 0.0, y: 15.0, width: CGRectGetWidth(view.bounds), height: 25.0))
+        let dayLabel = UILabel(frame: CGRect(x: 0.0, y: 30.0, width: CGRectGetWidth(view.bounds), height: 50.0))
         dayLabel.text = day
         dayLabel.textAlignment = .Center
-        dayLabel.font = UIFont(name: "Avenir-Heavy", size: 22.0)
+        dayLabel.font = UIFont(name: "Avenir-Heavy", size: 44.0)
         dayLabel.textColor = UIColor.whiteColor()
         view.addSubview(dayLabel)
         

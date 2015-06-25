@@ -14,7 +14,10 @@ class SearchViewController: UIViewController {
     var artists = [Artist]() {
         didSet {
             collectionView.reloadSections(NSIndexSet(index: 0))
-            instructionLabel.hidden = artists.count > 0
+            
+            let showList = artists.count > 0
+            collectionView.hidden = !showList
+            instructionLabel.hidden = showList
         }
     }
     var loading = false {
@@ -61,7 +64,9 @@ class SearchViewController: UIViewController {
             self.loading = false
             
             switch result {
-            case .Failure(let error): self.showError(error)
+            case .Failure(let error):
+                self.artists = []
+                self.showError(error)
                 
             case .Success(let artists):
                 self.artists = artists
@@ -84,6 +89,9 @@ class SearchViewController: UIViewController {
         case .ParsingDataError:
             title = "Parsing Data Error"
             message = "Cannot parse data"
+        case .EmptySetError:
+            title = "Empty Set"
+            message = "No results found 😐"
         case .ParsingError(let errorMessage):
             title = "Parsing Error"
             message = errorMessage

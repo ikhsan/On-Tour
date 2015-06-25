@@ -11,6 +11,7 @@ enum SongkickerError : ErrorType {
     case ConfigurationError
     case NetworkError
     case ParsingDataError
+    case EmptySetError
     case ParsingError(String)
 }
 
