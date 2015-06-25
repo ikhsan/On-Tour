@@ -24,9 +24,13 @@ class SearchViewController: UIViewController {
         }
     }
     
+    // MARK: - View Controller Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBar.becomeFirstResponder()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .Done, target: nil, action: nil)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -47,6 +51,8 @@ class SearchViewController: UIViewController {
             artistVC.artist = artist
         }
     }
+    
+    // MARK: - Actions
     
     func searchArtistName(name: String) {
         

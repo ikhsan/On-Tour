@@ -23,7 +23,7 @@ class Gig : Decodeable {
         self.id = json["id"].intValue
         self.name = json["displayName"].stringValue
         self.uri = json["uri"].stringValue
-        self.date = json["start"]["date"].stringValue.sk_date()
+        self.date = json["start"]["date"].stringValue.sk_date
         self.venue = json["venue"]["displayName"].stringValue
         
         if let lat = json["venue"]["lat"].double, let lng = json["venue"]["lng"].double {

@@ -19,7 +19,7 @@ extension String {
         return formatter
     }
     
-    func sk_date() -> NSDate? {
+    var sk_date: NSDate? {
         return formatter.dateFromString(self)
     }
     

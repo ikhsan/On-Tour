@@ -12,13 +12,13 @@ class Artist : Decodeable {
         self.id = id
         self.name = name
         self.uri = uri
-        self.onTourDate = onTourDate.sk_date()
+        self.onTourDate = onTourDate.sk_date
     }
 
     required init(json: JSON) {
         self.id = json["id"].stringValue
         self.name = json["displayName"].stringValue
         self.uri = json["uri"].stringValue
-        self.onTourDate = json["onTourUntil"].string?.sk_date()
+        self.onTourDate = json["onTourUntil"].string?.sk_date
     }
 }

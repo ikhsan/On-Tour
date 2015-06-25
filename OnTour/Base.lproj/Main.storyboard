@@ -212,6 +212,9 @@
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs0-7w-3S1">
                                 <rect key="frame" x="0.0" y="271" width="600" height="329"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0yR-oP-wrh" id="o1c-Mm-mJc"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xg8-na-l88">
                                 <rect key="frame" x="255" y="554" width="91" height="30"/>

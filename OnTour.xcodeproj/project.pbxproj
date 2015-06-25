@@ -28,6 +28,8 @@
 		46EC87621B374D730008DF80 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC87611B374D730008DF80 /* Parser.swift */; };
 		46FD4F861B37696A0047EDD8 /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD4F851B37696A0047EDD8 /* ArtistCell.swift */; };
 		46FD4F881B3769F40047EDD8 /* SongkickColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD4F871B3769F40047EDD8 /* SongkickColors.swift */; };
+		46FF743D1B3B69E800CAE1FD /* ArtistViewController+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF743C1B3B69E800CAE1FD /* ArtistViewController+Map.swift */; };
+		46FF74401B3B78AC00CAE1FD /* CalendarThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF743F1B3B78AC00CAE1FD /* CalendarThumbnail.swift */; };
 		810004601F1C1D9BB09CAC2F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54B9633C4E55A2BA57359E1 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		46EC87611B374D730008DF80 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		46FD4F851B37696A0047EDD8 /* ArtistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
 		46FD4F871B3769F40047EDD8 /* SongkickColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongkickColors.swift; sourceTree = "<group>"; };
+		46FF743C1B3B69E800CAE1FD /* ArtistViewController+Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArtistViewController+Map.swift"; sourceTree = "<group>"; };
+		46FF743F1B3B78AC00CAE1FD /* CalendarThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarThumbnail.swift; sourceTree = "<group>"; };
 		A8E8E3BB1F3A5B7D2B050331 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C54B9633C4E55A2BA57359E1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71B03B084B75B9E9CBB8854 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,8 +196,9 @@
 			children = (
 				4638F3CF1B34F36B00C7281D /* AppDelegate.swift */,
 				4638F3D11B34F36B00C7281D /* SearchViewController.swift */,
-				461EF46F1B3A185900B0F136 /* ArtistViewController.swift */,
 				464A4B931B3790D9004178B4 /* SearchViewController+Collection.swift */,
+				461EF46F1B3A185900B0F136 /* ArtistViewController.swift */,
+				46FF743C1B3B69E800CAE1FD /* ArtistViewController+Map.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				4638F3D31B34F36B00C7281D /* Main.storyboard */,
 				46FD4F851B37696A0047EDD8 /* ArtistCell.swift */,
 				46FD4F871B3769F40047EDD8 /* SongkickColors.swift */,
+				46FF743F1B3B78AC00CAE1FD /* CalendarThumbnail.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -439,6 +445,8 @@
 				4638F3D01B34F36B00C7281D /* AppDelegate.swift in Sources */,
 				461EF4741B3A302000B0F136 /* Array+Take.swift in Sources */,
 				464A4B981B379CFA004178B4 /* UIAppearance_Swift.m in Sources */,
+				46FF743D1B3B69E800CAE1FD /* ArtistViewController+Map.swift in Sources */,
+				46FF74401B3B78AC00CAE1FD /* CalendarThumbnail.swift in Sources */,
 				4638F4011B34F4DD00C7281D /* Gig.swift in Sources */,
 				46EC87621B374D730008DF80 /* Parser.swift in Sources */,
 				46FD4F881B3769F40047EDD8 /* SongkickColors.swift in Sources */,

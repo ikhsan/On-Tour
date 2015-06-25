@@ -1,11 +1,11 @@
 
 import SwiftyJSON
 
-typealias ResultGig = Result<[Gig], SongkickerError>
+typealias ResultGigs = Result<[Gig], SongkickerError>
 
 extension Parser {
     
-    static func parseGigs(json: JSON) -> ResultGig {
+    static func parseGigs(json: JSON) -> ResultGigs {
 
         guard validate(json), let gigsJSON = json["resultsPage"]["results"]["event"].array else {
             let status = json["resultsPage"]["error"]["message"].stringValue
@@ -21,7 +21,7 @@ extension Parser {
 
 extension Songkicker {
 
-    class func gigs(artist: Artist, page: Int, completionHandler: (ResultGig) -> Void) {
+    class func gigs(artist: Artist, page: Int, completionHandler: (ResultGigs) -> Void) {
         let param = ["per_page" : 15]
         
         kick("artists/\(artist.id)/calendar.json", additionalParameters: param) { result in

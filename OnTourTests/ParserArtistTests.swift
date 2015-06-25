@@ -49,7 +49,7 @@ class ParserArtistTests: XCTestCase {
         case .Success(let artists):
             let artist = artists.first!
             
-            let expectedDate = "2015-08-25".sk_date()!
+            let expectedDate = "2015-08-25".sk_date!
             
             XCTAssertEqual("341024", artist.id)
             XCTAssertEqual("Fireworks", artist.name)

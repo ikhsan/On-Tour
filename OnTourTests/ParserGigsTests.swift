@@ -34,7 +34,7 @@ class ParserGigsTests: XCTestCase {
         case .Failure(_): XCTFail("gigs should have correct data")
             
         case .Success(let gigs):
-            let expectedDate = "2015-07-02".sk_date()!
+            let expectedDate = "2015-07-02".sk_date!
             
             let gig = gigs.first!
             

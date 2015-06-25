@@ -1,15 +1,10 @@
-//
-//  ArtistViewController.swift
-//  OnTour
-//
-//  Created by Ikhsan Assaat on 6/23/15.
-//  Copyright © 2015 Ikhsan Assaat. All rights reserved.
-//
 
 import UIKit
 import MapKit
 
 class ArtistViewController: UIViewController {
+    
+    // MARK: - Properties
     
     @IBOutlet weak var badgeView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
@@ -20,14 +15,23 @@ class ArtistViewController: UIViewController {
     
     var artist: Artist?
     
+    // MARK: - View Controller Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadInfoForArtist(artist)
+        setupNavigationBar()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setupNavigationBar() {
+        let actionButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "openArtist")
+        navigationItem.rightBarButtonItem = actionButton
+        
+        let icon = UIImageView(image: UIImage(named: "ampli-icon"))
+        icon.contentMode = .ScaleAspectFit
+        icon.frame.size = CGSize(width: 30, height: 30)
+        navigationItem.titleView = icon
     }
     
     func loadInfoForArtist(maybeArtist: Artist?) {
@@ -37,21 +41,23 @@ class ArtistViewController: UIViewController {
         
         self.badgeView.hidden = !artist.onTour
         self.nameLabel.text = artist.name
-        loadImage(artist)
-        loadSimilarArtists(artist)
+        getImage(artist)
+        getSimilarArtists(artist)
         
         self.tourMapView.hidden = !artist.onTour
-        loadGigs(artist)
+        getGigs(artist)
     }
 }
 
 extension ArtistViewController {
     
-    func loadImage(artist: Artist) {
+    // MARK: - Songkicker API
+    
+    func getImage(artist: Artist) {
         Songkicker.image(artist) { image in self.imageView.image = image }
     }
     
-    func loadSimilarArtists(artist: Artist) {
+    func getSimilarArtists(artist: Artist) {
         
         self.similarArtistsLabel.text = "Searching for similar artists..."
         
@@ -66,7 +72,7 @@ extension ArtistViewController {
         }
     }
     
-    func loadGigs(artist: Artist) {
+    func getGigs(artist: Artist) {
         
         guard artist.onTour else {
             mapLabel.text = "Currently Not Gigging";
@@ -75,9 +81,66 @@ extension ArtistViewController {
             return
         }
         
+        mapLabel.text = "Loading gigs..."
         
-        
-        
+        Songkicker.gigs(artist, page: 1) { result -> Void in
+            switch result {
+            case .Failure(_): self.mapLabel.text = "Gigs not found :("
+            case .Success(let gigs):
+                self.mapLabel.text = "Tour Map"
+                self.loadGigs(gigs)
+            }
+        }
     }
 
+}
+
+extension ArtistViewController {
+    
+    // MARK: - Actions
+    
+    func confirmOpenInSafari(message: String, ok: String, cancel: String, urlString: String) -> UIAlertController {
+        let alert = UIAlertController(title: "Open in Safari?", message: message, preferredStyle: .Alert)
+        
+        let nope = UIAlertAction(title: cancel, style: .Cancel, handler: nil)
+        alert.addAction(nope)
+        
+        let yep = UIAlertAction(title: ok, style: .Default) { _ in
+            if let url = NSURL(string: urlString) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+        alert.addAction(yep)
+        
+        return alert
+    }
+    
+    func openArtist() {
+        guard let a = artist else {
+            return
+        }
+        
+        openArtist(a)
+    }
+    
+    func openArtist(artist: Artist) {
+        let alert = confirmOpenInSafari(
+            "Do you want to open \(artist.name)'s songkick profile?",
+            ok: "Yep",
+            cancel: "Nope",
+            urlString: artist.uri
+        )
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func openGig(gig: Gig) {
+        let alert = confirmOpenInSafari(
+            "Do you want to open \(gig.name)?",
+            ok: "Sure",
+            cancel: "Na ah",
+            urlString: gig.uri
+        )
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
 }
