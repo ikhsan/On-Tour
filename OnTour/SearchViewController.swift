@@ -83,6 +83,9 @@ class SearchViewController: UIViewController {
         case .ConfigurationError:
             title = "API not configured"
             message = "Please use configure with your API key"
+        case .InvalidRequest:
+            title = "Invalid Request"
+            message = "Might need to double check your request?"
         case .NetworkError:
             title = "Network Error"
             message = "Connection is currently unavailable/faulty"

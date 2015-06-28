@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func configureSongkicker() {
-        Songkicker.configureBase("http://api.songkick.com/api/3.0/", apikey: "jhevSy2yQF6HFzmb")
+        Songkicker.configureBase("https://api.songkick.com/api/3.0/", apikey: "jhevSy2yQF6HFzmb")
     }
     
     func customizeAppearance() {
