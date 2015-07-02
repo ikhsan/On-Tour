@@ -3,4 +3,4 @@
 
 Toy project using Swift and Songkick's API
 
-![](Screenshot/ontour.gif)
+![](/Screenshot/ontour.gif)
