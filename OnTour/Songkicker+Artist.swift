@@ -34,8 +34,8 @@ extension Songkicker {
         
         kickData(fullpath) { result in
             switch result {
-            case .Failure(_): completionHandler(defaultImage)
-                
+            case .Failure(_):
+                completionHandler(defaultImage)
             case .Success(let data):
                 let image = UIImage(data: data) ?? defaultImage
                 completionHandler(image)
@@ -48,8 +48,8 @@ extension Songkicker {
         
         kick("search/artists.json", additionalParameters: params) { result in
             switch result {
-            case .Failure(let error): completionHandler(.Failure(error))
-                
+            case .Failure(let error):
+                completionHandler(.Failure(error))                
             case .Success(let json):
                 let json = JSON(json)
                 let result = Parser.parseArtists(json)
