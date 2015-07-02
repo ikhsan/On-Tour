@@ -1,6 +1,6 @@
 # On Tour
 ### 🎶 Stalk your favorite artists while on tour 🎶
 
-Toy project using Swift and Songkick's API
+Fun prototype using Swift 2.0 and Songkick's API
 
 ![](/Screenshot/ontour.gif)
