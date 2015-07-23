@@ -1,11 +1,4 @@
 
-import Foundation
-
-enum Result<T, Error: ErrorType> {
-    case Success(T)
-    case Failure(Error)
-}
-
 enum SongkickerError : ErrorType {
     case ConfigurationError
     case NetworkError

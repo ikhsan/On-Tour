@@ -1,11 +1,11 @@
 
 import SwiftyJSON
 
-typealias ResultArtist = Result<[Artist], SongkickerError>
+typealias ResultArtists = Result<[Artist], SongkickerError>
 
 extension Parser {
     
-    static func parseArtists(json: JSON) -> ResultArtist {
+    static func parseArtists(json: JSON) -> ResultArtists {
         
         guard validate(json) else {
             let status = json["resultsPage"]["error"]["message"].stringValue
@@ -43,31 +43,19 @@ extension Songkicker {
         }
     }
     
-    class func searchArtist(name: String, page: Int = 1, completionHandler: (ResultArtist) -> Void) {
+    class func searchArtist(name: String, page: Int = 1, completionHandler: (ResultArtists) -> Void) {
         let params: [String: AnyObject] = ["query": name, "page": page]
         
         kick("search/artists.json", additionalParameters: params) { result in
-            switch result {
-            case .Failure(let error):
-                completionHandler(.Failure(error))                
-            case .Success(let json):
-                let json = JSON(json)
-                let result = Parser.parseArtists(json)
-                completionHandler(result)
-            }
+            let artists = result.flatMap { Parser.parseArtists(JSON($0)) }
+            completionHandler(artists)
         }
     }
     
-    class func similar(artist: Artist, completionHandler: (ResultArtist) -> Void) {
+    class func similar(artist: Artist, completionHandler: (ResultArtists) -> Void) {
         kick("artists/\(artist.id)/similar_artists.json") { result in
-            switch result {
-            case .Failure(let error): completionHandler(.Failure(error))
-                
-            case .Success(let json):
-                let json = JSON(json)
-                let result = Parser.parseArtists(json)
-                completionHandler(result)
-            }
+            let similar = result.flatMap { Parser.parseArtists(JSON($0)) }
+            completionHandler(similar)
         }
     }
     

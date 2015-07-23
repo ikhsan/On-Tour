@@ -25,14 +25,8 @@ extension Songkicker {
         let param = ["per_page" : 15]
         
         kick("artists/\(artist.id)/calendar.json", additionalParameters: param) { result in
-            switch result {
-            case .Failure(let error): completionHandler(.Failure(error))
-                
-            case .Success(let json):
-                let json = JSON(json)
-                let result = Parser.parseGigs(json)
-                completionHandler(result)
-            }
+            let gigs = result.flatMap { Parser.parseGigs(JSON($0)) }
+            completionHandler(gigs)
         }
     }
     
