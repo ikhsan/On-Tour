@@ -27,7 +27,8 @@ class Songkicker {
         }
         
         // use base url & apikey params
-        let URLString = base.stringByAppendingPathComponent(path)
+        let addPathToBase = NSString.stringByAppendingPathComponent(base)
+        let URLString = addPathToBase(path)
         var params = additionalParameters
         params["apikey"] = apikey
         

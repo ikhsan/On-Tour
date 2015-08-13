@@ -42,7 +42,10 @@ class CalendarThumbnail {
         view.addSubview(dayLabel)
         
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext())
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return UIImage()
+        }
+        view.layer.renderInContext(context)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
